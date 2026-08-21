@@ -1,0 +1,300 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+
+/* ---------- HEADER ---------- */
+
+header {
+    background: #ffffff;
+    padding: 22px 8%;
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2563eb;
+}
+
+.project-label {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+
+/* ---------- MAIN ---------- */
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 55px 25px;
+}
+
+
+/* ---------- HERO ---------- */
+
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 12px;
+    color: #111827;
+}
+
+.hero p {
+    font-size: 17px;
+    color: #6b7280;
+}
+
+
+/* ---------- NAME SECTION ---------- */
+
+.name-section {
+    max-width: 500px;
+    margin: 0 auto 50px;
+
+    background: #ffffff;
+    padding: 25px;
+
+    border-radius: 14px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.name-section label {
+    display: block;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    margin-bottom: 10px;
+}
+
+.name-section input {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.name-section input:focus {
+    border-color: #2563eb;
+}
+
+
+/* ---------- DISEASE SECTION ---------- */
+
+.section-title {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    font-size: 25px;
+    margin-bottom: 7px;
+}
+
+.section-title p {
+    color: #6b7280;
+}
+
+
+/* ---------- DISEASE GRID ---------- */
+
+.disease-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+
+    max-width: 850px;
+
+    margin: auto;
+}
+
+
+/* ---------- DISEASE CARD ---------- */
+
+.disease-card {
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+
+    padding: 30px;
+
+    min-height: 170px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    transition: 0.25s;
+}
+
+
+/* Active Diabetes Card */
+
+.disease-card.active {
+    cursor: pointer;
+}
+
+.disease-card.active:hover {
+    transform: translateY(-5px);
+
+    border-color: #2563eb;
+
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12);
+}
+
+
+/* Disease Icon */
+
+.disease-icon {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.disease-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.disease-card p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+
+/* ---------- COMING SOON ---------- */
+
+.disease-card.disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.coming-soon {
+    display: inline-block;
+
+    margin-top: 12px;
+
+    padding: 5px 10px;
+
+    background: #f3f4f6;
+    color: #6b7280;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+}
+
+
+/* ---------- DISCLAIMER ---------- */
+
+.disclaimer {
+    max-width: 850px;
+
+    margin: 55px auto 25px;
+
+    padding: 20px;
+
+    background: #fff8e7;
+
+    border: 1px solid #f1dfaa;
+
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+.disclaimer h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.disclaimer p {
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    color: #666;
+}
+
+
+/* ---------- AUTHOR ---------- */
+
+.author {
+    text-align: center;
+
+    margin-top: 25px;
+
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+.author strong {
+    color: #374151;
+}
+
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 18px 5%;
+    }
+
+    .project-label {
+        display: none;
+    }
+
+    main {
+        padding: 40px 18px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .disease-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .name-section {
+        margin-bottom: 40px;
+    }
+}
