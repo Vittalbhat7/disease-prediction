@@ -1,153 +1,77 @@
-// ---------- USER NAME ----------
+const form = document.getElementById("diabetesForm");
 
-const userName = localStorage.getItem("userName");
-
-const userGreeting = document.getElementById("userGreeting");
-
-if (userName) {
-    userGreeting.textContent = `Welcome, ${userName}`;
-} else {
-    userGreeting.textContent = "Welcome";
-}
-
-
-// ---------- BACK BUTTON ----------
-
-function goBack() {
-    window.location.href = "index.html";
-}
-
-
-// ---------- DIABETES FORM ----------
-
-const diabetesForm = document.getElementById("diabetesForm");
-
-diabetesForm.addEventListener("submit", function (event) {
-
-    // Prevent page refresh
+form.addEventListener("submit", async function (event) {
     event.preventDefault();
 
-
-    // ---------- GET INPUT VALUES ----------
-
-    const pregnancies = Number(
-        document.getElementById("pregnancies").value
-    );
-
-    const glucose = Number(
-        document.getElementById("glucose").value
-    );
-
-    const bloodPressure = Number(
-        document.getElementById("bloodPressure").value
-    );
-
-    const skinThickness = Number(
-        document.getElementById("skinThickness").value
-    );
-
-    const insulin = Number(
-        document.getElementById("insulin").value
-    );
-
-    const bmi = Number(
-        document.getElementById("bmi").value
-    );
-
-    const diabetesPedigree = Number(
-        document.getElementById("diabetesPedigree").value
-    );
-
-    const age = Number(
-        document.getElementById("age").value
-    );
-
-
-    // ---------- STORE PATIENT DATA ----------
-
-    const patientData = {
-        pregnancies: pregnancies,
-        glucose: glucose,
-        bloodPressure: bloodPressure,
-        skinThickness: skinThickness,
-        insulin: insulin,
-        bmi: bmi,
-        diabetesPedigree: diabetesPedigree,
-        age: age
+    const data = {
+        Pregnancies: Number(document.getElementById("pregnancies").value),
+        Glucose: Number(document.getElementById("glucose").value),
+        BloodPressure: Number(document.getElementById("bloodPressure").value),
+        SkinThickness: Number(document.getElementById("skinThickness").value),
+        Insulin: Number(document.getElementById("insulin").value),
+        BMI: Number(document.getElementById("bmi").value),
+        DiabetesPedigreeFunction: Number(
+            document.getElementById("diabetesPedigree").value
+        ),
+        Age: Number(document.getElementById("age").value)
     };
 
+    try {
+        const response = await fetch(
+            "http://127.0.0.1:8000/predict/diabetes",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            }
+        );
 
-    // Check data in browser console
-    console.log("Patient Data:", patientData);
+        if (!response.ok) {
+            throw new Error("Prediction request failed");
+        }
 
+        const result = await response.json();
 
-    /*
-        TEMPORARY RESULT
+        console.log(result);
 
-        This is NOT our real ML prediction.
+        // Show result card
+        document.getElementById("resultCard").style.display = "block";
 
-        Later:
+        // Show prediction message
+        document.getElementById("resultMessage").textContent =
+            result.result;
 
-        Frontend
-            ↓
-        FastAPI
-            ↓
-        Diabetes ML Model
-            ↓
-        Prediction Probability
-            ↓
-        Frontend
-    */
+        // Show probability
+        document.getElementById("probabilityValue").textContent =
+            `${result.probability}%`;
 
-    const probability = 72;
+        // Determine risk level
+        let riskLevel;
 
+        if (result.probability < 30) {
+            riskLevel = "Low";
+        } else if (result.probability < 60) {
+            riskLevel = "Moderate";
+        } else {
+            riskLevel = "High";
+        }
 
-    // ---------- SHOW RESULT ----------
+        document.getElementById("riskLevel").textContent = riskLevel;
 
-    const resultCard = document.getElementById("resultCard");
+    } catch (error) {
+        console.error("Error:", error);
 
-    resultCard.style.display = "block";
+        document.getElementById("resultCard").style.display = "block";
 
+        document.getElementById("resultMessage").textContent =
+            "Unable to get prediction";
 
-    // Probability
+        document.getElementById("probabilityValue").textContent =
+            "--%";
 
-    document.getElementById("probabilityValue").textContent =
-        probability + "%";
-
-
-    // ---------- RISK LEVEL ----------
-
-    let riskLevel;
-
-    if (probability < 30) {
-
-        riskLevel = "Low";
-
-    } else if (probability < 70) {
-
-        riskLevel = "Moderate";
-
-    } else {
-
-        riskLevel = "High";
-
+        document.getElementById("riskLevel").textContent =
+            "Please make sure the backend is running.";
     }
-
-
-    document.getElementById("riskLevel").textContent =
-        riskLevel;
-
-
-    // ---------- RESULT MESSAGE ----------
-
-    document.getElementById("resultMessage").textContent =
-        `Based on the entered information, the predicted risk is ${riskLevel}.`;
-
-
-    // Scroll to result
-
-    resultCard.scrollIntoView({
-        behavior: "smooth"
-    });
-
 });
