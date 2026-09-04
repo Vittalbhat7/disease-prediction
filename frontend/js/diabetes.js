@@ -1,3 +1,16 @@
+/* ---------- USER GREETING ---------- */
+
+const userName = localStorage.getItem("userName");
+
+const userGreeting = document.getElementById("userGreeting");
+
+if (userName) {
+    userGreeting.textContent = `Hello, ${userName}!`;
+}
+
+
+/* ---------- DIABETES FORM ---------- */
+
 const form = document.getElementById("diabetesForm");
 
 form.addEventListener("submit", async function (event) {

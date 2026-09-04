@@ -1,338 +1,338 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Diabetes Risk Prediction</title>
-
-    <link rel="stylesheet" href="css/diabetes.css">
-</head>
-
-<body>
-
-    <!-- Header -->
-
-    <header>
-
-        <div class="logo">
-            AI HealthCare
-        </div>
-
-        <div class="page-title">
-            Diabetes Prediction
-        </div>
-
-    </header>
-
-
-    <!-- Main Content -->
-
-    <main>
-
-        <!-- Back Button -->
-
-        <button class="back-button" onclick="goBack()">
-            ← Back to Home
-        </button>
-
-
-        <!-- Welcome -->
-
-        <section class="welcome">
-
-            <h1>
-                Diabetes Risk Prediction
-            </h1>
-
-            <p>
-                Enter the required information to predict your diabetes risk.
-            </p>
+<!DOCTYPE html>  
+<html lang="en">  
+  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  
+    <title>Diabetes Risk Prediction</title>  
+  
+    <link rel="stylesheet" href="css/diabetes.css">  
+</head>  
+  
+<body>  
+  
+    <!-- Header -->  
+  
+    <header>  
+  
+        <div class="logo">  
+            AI HealthCare  
+        </div>  
+  
+        <div class="page-title">  
+            Diabetes Prediction  
+        </div>  
+  
+    </header>  
+  
+  
+    <!-- Main Content -->  
+  
+    <main>  
+  
+        <!-- Back Button -->  
+  
+        <button class="back-button" onclick="goBack()">  
+            ← Back to Home  
+        </button>  
+  
+  
+        <!-- Welcome -->  
+  
+        <section class="welcome">  
 
             <p id="userGreeting"></p>
-
-        </section>
-
-
-        <!-- Diabetes Form -->
-
-        <section class="prediction-card">
-
-            <h2>
-                Enter Your Information
-            </h2>
-
-            <p class="form-description">
-                Enter the values in the units mentioned below.
-            </p>
-
-
-            <form id="diabetesForm">
-
-
-                <!-- Pregnancies -->
-
-                <div class="form-group">
-
-                    <label for="pregnancies">
-                        Pregnancies
-                        <span>(count)</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        id="pregnancies"
-                        name="pregnancies"
-                        placeholder="e.g. 2"
-                        min="0"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- Glucose -->
-
-                <div class="form-group">
-
-                    <label for="glucose">
-                        Glucose
-                        <span>(mg/dL)</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        id="glucose"
-                        name="glucose"
-                        placeholder="e.g. 120"
-                        min="0"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- Blood Pressure -->
-
-                <div class="form-group">
-
-                    <label for="bloodPressure">
-                        Blood Pressure
-                        <span>(mmHg)</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        id="bloodPressure"
-                        name="bloodPressure"
-                        placeholder="e.g. 80"
-                        min="0"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- Skin Thickness -->
-
-                <div class="form-group">
-
-                    <label for="skinThickness">
-                        Skin Thickness
-                        <span>(mm)</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        id="skinThickness"
-                        name="skinThickness"
-                        placeholder="e.g. 20"
-                        min="0"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- Insulin -->
-
-                <div class="form-group">
-
-                    <label for="insulin">
-                        Insulin
-                        <span>(µIU/mL)</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        id="insulin"
-                        name="insulin"
-                        placeholder="e.g. 80"
-                        min="0"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- BMI -->
-
-                <div class="form-group">
-
-                    <label for="bmi">
-                        BMI
-                        <span>(kg/m²)</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        id="bmi"
-                        name="bmi"
-                        placeholder="e.g. 24.5"
-                        min="0"
-                        step="0.1"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- Diabetes Pedigree Function -->
-
-                <div class="form-group">
-
-                    <label for="diabetesPedigree">
-                        Diabetes Pedigree Function
-                        <span>(score)</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        id="diabetesPedigree"
-                        name="diabetesPedigree"
-                        placeholder="e.g. 0.47"
-                        min="0"
-                        step="0.01"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- Age -->
-
-                <div class="form-group">
-
-                    <label for="age">
-                        Age
-                        <span>(years)</span>
-                    </label>
-
-                    <input
-                        type="number"
-                        id="age"
-                        name="age"
-                        placeholder="e.g. 30"
-                        min="1"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- Submit -->
-
-                <button
-                    type="submit"
-                    class="predict-button"
-                >
-                    Predict Diabetes Risk
-                </button>
-
-            </form>
-
-        </section>
-
-
-        <!-- Result -->
-
-        <section
-            class="result-card"
-            id="resultCard"
-            style="display: none;"
-        >
-
-            <h2>
-                Prediction Result
-            </h2>
-
-            <p id="resultMessage"></p>
-
-            <div class="probability">
-
-                <span>
-                    Diabetes Probability
-                </span>
-
-                <strong id="probabilityValue">
-                    --%
-                </strong>
-
-            </div>
-
-            <div class="risk-level">
-
-                <span>
-                    Risk Level
-                </span>
-
-                <strong id="riskLevel">
-                    --
-                </strong>
-
-            </div>
-
-        </section>
-
-
-        <!-- Disclaimer -->
-
-        <section class="disclaimer">
-
-            <h3>
-                Important Notice
-            </h3>
-
-            <p>
-                This is a student project developed for educational purposes.
-                The prediction generated by this system may contain errors
-                and should not be considered a medical diagnosis or a
-                substitute for professional medical advice.
-            </p>
-
-        </section>
-
-
-        <!-- Author -->
-
-        <div class="author">
-
-            Made by
-            <strong>Vittal Varadaraj Bhat</strong>
-            <br>
-
-            BMS College of Engineering (BMSCE)
-
-        </div>
-
-    </main>
-
-
-    <!-- JavaScript -->
-
-    <script src="js/diabetes.js"></script>
-
-</body>
-
+  
+            <h1>  
+                Diabetes Risk Prediction  
+            </h1>  
+  
+            <p>  
+                Enter the required information to predict your diabetes risk.  
+            </p>  
+  
+        </section>  
+  
+  
+        <!-- Diabetes Form -->  
+  
+        <section class="prediction-card">  
+  
+            <h2>  
+                Enter Your Information  
+            </h2>  
+  
+            <p class="form-description">  
+                Enter the values in the units mentioned below.  
+            </p>  
+  
+  
+            <form id="diabetesForm">  
+  
+  
+                <!-- Pregnancies -->  
+  
+                <div class="form-group">  
+  
+                    <label for="pregnancies">  
+                        Pregnancies  
+                        <span>(count)</span>  
+                    </label>  
+  
+                    <input  
+                        type="number"  
+                        id="pregnancies"  
+                        name="pregnancies"  
+                        placeholder="e.g. 2"  
+                        min="0"  
+                        required  
+                    >  
+  
+                </div>  
+  
+  
+                <!-- Glucose -->  
+  
+                <div class="form-group">  
+  
+                    <label for="glucose">  
+                        Glucose  
+                        <span>(mg/dL)</span>  
+                    </label>  
+  
+                    <input  
+                        type="number"  
+                        id="glucose"  
+                        name="glucose"  
+                        placeholder="e.g. 120"  
+                        min="0"  
+                        required  
+                    >  
+  
+                </div>  
+  
+  
+                <!-- Blood Pressure -->  
+  
+                <div class="form-group">  
+  
+                    <label for="bloodPressure">  
+                        Blood Pressure  
+                        <span>(mmHg)</span>  
+                    </label>  
+  
+                    <input  
+                        type="number"  
+                        id="bloodPressure"  
+                        name="bloodPressure"  
+                        placeholder="e.g. 80"  
+                        min="0"  
+                        required  
+                    >  
+  
+                </div>  
+  
+  
+                <!-- Skin Thickness -->  
+  
+                <div class="form-group">  
+  
+                    <label for="skinThickness">  
+                        Skin Thickness  
+                        <span>(mm)</span>  
+                    </label>  
+  
+                    <input  
+                        type="number"  
+                        id="skinThickness"  
+                        name="skinThickness"  
+                        placeholder="e.g. 20"  
+                        min="0"  
+                        required  
+                    >  
+  
+                </div>  
+  
+  
+                <!-- Insulin -->  
+  
+                <div class="form-group">  
+  
+                    <label for="insulin">  
+                        Insulin  
+                        <span>(µIU/mL)</span>  
+                    </label>  
+  
+                    <input  
+                        type="number"  
+                        id="insulin"  
+                        name="insulin"  
+                        placeholder="e.g. 80"  
+                        min="0"  
+                        required  
+                    >  
+  
+                </div>  
+  
+  
+                <!-- BMI -->  
+  
+                <div class="form-group">  
+  
+                    <label for="bmi">  
+                        BMI  
+                        <span>(kg/m²)</span>  
+                    </label>  
+  
+                    <input  
+                        type="number"  
+                        id="bmi"  
+                        name="bmi"  
+                        placeholder="e.g. 24.5"  
+                        min="0"  
+                        step="0.1"  
+                        required  
+                    >  
+  
+                </div>  
+  
+  
+                <!-- Diabetes Pedigree Function -->  
+  
+                <div class="form-group">  
+  
+                    <label for="diabetesPedigree">  
+                        Diabetes Pedigree Function  
+                        <span>(score)</span>  
+                    </label>  
+  
+                    <input  
+                        type="number"  
+                        id="diabetesPedigree"  
+                        name="diabetesPedigree"  
+                        placeholder="e.g. 0.47"  
+                        min="0"  
+                        step="0.01"  
+                        required  
+                    >  
+  
+                </div>  
+  
+  
+                <!-- Age -->  
+  
+                <div class="form-group">  
+  
+                    <label for="age">  
+                        Age  
+                        <span>(years)</span>  
+                    </label>  
+  
+                    <input  
+                        type="number"  
+                        id="age"  
+                        name="age"  
+                        placeholder="e.g. 30"  
+                        min="1"  
+                        required  
+                    >  
+  
+                </div>  
+  
+  
+                <!-- Submit -->  
+  
+                <button  
+                    type="submit"  
+                    class="predict-button"  
+                >  
+                    Predict Diabetes Risk  
+                </button>  
+  
+            </form>  
+  
+        </section>  
+  
+  
+        <!-- Result -->  
+  
+        <section  
+            class="result-card"  
+            id="resultCard"  
+            style="display: none;"  
+        >  
+  
+            <h2>  
+                Prediction Result  
+            </h2>  
+  
+            <p id="resultMessage"></p>  
+  
+            <div class="probability">  
+  
+                <span>  
+                    Diabetes Probability  
+                </span>  
+  
+                <strong id="probabilityValue">  
+                    --%  
+                </strong>  
+  
+            </div>  
+  
+            <div class="risk-level">  
+  
+                <span>  
+                    Risk Level  
+                </span>  
+  
+                <strong id="riskLevel">  
+                    --  
+                </strong>  
+  
+            </div>  
+  
+        </section>  
+  
+  
+        <!-- Disclaimer -->  
+  
+        <section class="disclaimer">  
+  
+            <h3>  
+                Important Notice  
+            </h3>  
+  
+            <p>  
+                This is a student project developed for educational purposes.  
+                The prediction generated by this system may contain errors  
+                and should not be considered a medical diagnosis or a  
+                substitute for professional medical advice.  
+            </p>  
+  
+        </section>  
+  
+  
+        <!-- Author -->  
+  
+        <div class="author">  
+  
+            Made by  
+            <strong>Vittal Varadaraj Bhat</strong>  
+            <br>  
+  
+            BMS College of Engineering (BMSCE)  
+  
+        </div>  
+  
+    </main>  
+  
+  
+    <!-- JavaScript -->  
+  
+    <script src="js/diabetes.js"></script>  
+  
+</body>  
+  
 </html>
