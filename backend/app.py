@@ -7,6 +7,9 @@ from pathlib import Path
 
 # Create FastAPI app
 app = FastAPI()
+from mangum import Mangum
+
+handler = Mangum(app, api_gateway_base_path="/default")
 
 
 # Allow frontend to communicate with backend
@@ -21,7 +24,7 @@ app.add_middleware(
 
 # Find the diabetes model
 BASE_DIR = Path(__file__).resolve().parent
-MODEL_PATH = BASE_DIR.parent / "diabetes" / "diabetes_model.pkl"
+MODEL_PATH = BASE_DIR / "diabetes_model.pkl"
 
 
 # Load the trained model
