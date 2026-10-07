@@ -6,11 +6,11 @@ The project is being developed step by step, starting with **Diabetes Prediction
 
 ## Current Status
 
-| Disease   | Status      |
-| --------- | ----------- |
-| Diabetes  | Completed   |
-| Disease 2 | Coming Soon |
-| Disease 3 | Coming Soon |
+| Disease | Status |
+|---|---|
+| Diabetes |  Completed |
+| Heart Disease |  Coming Soon |
+| Lung Cancer | Coming Soon |
 | Disease 4 | Coming Soon |
 
 ---
