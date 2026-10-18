@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Liver Disease Prediction | HealthPredict AI</title>
+  <meta name="description" content="Liver Disease Prediction form for the HealthPredict AI educational project.">
+  <link rel="stylesheet" href="assets/css/common.css">
+  <link rel="stylesheet" href="assets/css/disease-form.css">
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/common.js"></script>
+  <script src="assets/js/liver.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="logo" aria-hidden="true"></span>HealthPredict AI</a>
+      <div class="nav-actions">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#modules">Predictors</a></li>
+          <li><a href="index.html#about">About</a></li>
+        </ul>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle dark theme" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        </button>
+        <button class="icon-btn" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="container">
+    <div class="page-head">
+      <a class="back" href="index.html">&larr; Back to Home</a>
+      <h1>Liver Disease Prediction</h1>
+      <p>Enter ten values covering age, gender, bilirubin, enzymes and proteins, using the same column names as the training dataset. All fields are required.</p>
+    </div>
+    <nav class="module-tabs" aria-label="Prediction modules"><a href="diabetes.html">Diabetes</a><a href="cardiovascular.html">Cardiovascular</a><a href="liver.html" aria-current="page">Liver</a></nav>
+    <div class="notice" id="apiNotice" hidden></div>
+    <section class="form-card" aria-label="Liver prediction form">
+      <form id="predictForm" novalidate>
+        <div id="formFields"></div>
+        <noscript><p class="error">JavaScript is required to display this form.</p></noscript>
+        <div class="actions">
+          <button class="btn btn-primary" id="submitBtn" type="submit"><span class="spinner" hidden aria-hidden="true"></span><span class="btn-label">Predict</span></button>
+          <button class="btn btn-ghost" id="resetBtn" type="button">Reset Form</button>
+        </div>
+      </form>
+    </section>
+    <div class="status" id="status" role="status" aria-live="polite"></div>
+    <p class="page-disclaimer">Educational project only. Predictions come from a machine-learning model and are not medical advice or a diagnosis. Consult a qualified clinician for health decisions.</p>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>HealthPredict AI</strong>
+        <p class="disclaimer-text">Educational project only. Predictions come from a machine-learning model and are not medical advice or a diagnosis. Consult a qualified clinician for health decisions.</p>
+        <p>&copy; <span id="year"></span> HealthPredict AI. Educational project.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="index.html">Home</a><a href="index.html#modules">Predictors</a><a href="index.html#about">About</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

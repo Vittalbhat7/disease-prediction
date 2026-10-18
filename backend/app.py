@@ -9,6 +9,7 @@ from pathlib import Path
 app = FastAPI()
 from mangum import Mangum
 
+
 handler = Mangum(app, api_gateway_base_path="/default")
 
 
