@@ -47,7 +47,11 @@ HealthPredict.initPredictor({
    * Once the FastAPI code exists, return { label, predictionClass, probability }.
    * Note: in your notebook, encoded target 1 = liver disease, 0 = no liver disease.
    */
-  parseResponse() {
-    throw new Error("the liver response adapter has not been configured yet (see liver.js).");
+  parseResponse(data) {
+    return {
+      label: data.result,
+      predictionClass: data.prediction,
+      probability: HealthPredict.toPercent(data.probability)
+    };
   }
 });

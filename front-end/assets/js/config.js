@@ -16,10 +16,10 @@ window.APP_CONFIG = {
 
     // NOT CONFIRMED: replace null with the real route (e.g. "/predict/cardio")
     // once the FastAPI code exists. While null, no request is ever sent.
-    cardiovascular: null,
+    cardiovascular: "/predict/cardiovascular",
 
     // NOT CONFIRMED: replace null with the real route once the backend exists.
-    liver: null
+    liver: "/predict/liver"
   },
 
   REQUEST_TIMEOUT_MS: 20000

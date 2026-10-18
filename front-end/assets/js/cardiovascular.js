@@ -51,7 +51,11 @@ HealthPredict.initPredictor({
    *   return { label: data.result, predictionClass: data.prediction,
    *            probability: HealthPredict.toPercent(data.probability) };
    */
-  parseResponse() {
-    throw new Error("the cardiovascular response adapter has not been configured yet (see cardiovascular.js).");
+   parseResponse(data) {
+    return {
+      label: data.result,
+      predictionClass: data.prediction,
+      probability: HealthPredict.toPercent(data.probability)
+    };
   }
 });
